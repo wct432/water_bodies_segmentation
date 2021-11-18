@@ -1,2 +1,2 @@
 # water_body_segmentation
-This project uses a CNN based on the U-Net architecture to segment bodies of water in satellite images. 
+In this project we will be performing image segmentation to segment bodies of water in satellite images.We will load our jpeg images as tensors in a Tensorflow dataset which will be fed to our model. We will do this using a Tensorflow Convolutional Neural Network based on the U-Net architecture. 
