@@ -4,10 +4,10 @@
     - [2. Find Mean Image Dimensions](#2-find-mean-image-dimensions)
     - [3. Load and Display Images as Tensors](#3-load-and-display-images-as-tensors)
         - [1. Define Function to Load Images and Masks](#1-define-function-to-load-images-and-masks)
-        - [2. Display Example Images](#2-display-example-images)
+        - [2. Display Example Images and Masks](#2-display-example-images-and-masks)
 - [3. Prepare Data](#3-prepare-data)
     - [1. Create TF Dataset, Scale, and Resize Images](#1-create-tf-dataset-scale-and-resize-images)
-    - [2. Display Example after Processing](#2-display-example-after-processing)
+    - [2. Display Examples after Processing](#2-display-examples-after-processing)
     - [3. Create Train, Test, and Validation Sets](#3-create-train-test-and-validation-sets)
     - [4. View Shape of Datasets](#4-view-shape-of-datasets)
 - [4. Build and Train U-Net Model](#4-build-and-train-u-net-model)
@@ -110,7 +110,7 @@ def load_img_and_mask(image_path,
     return (image, mask)                                        #return image and mask as a tuple
 ```
 
-##### 2. Display Example Images 
+##### 2. Display Example Images and Masks
 Next we will display three sample images and masks from our dataset, first we will group three random examples together: 
 ``` python
 #load three random examples
@@ -166,7 +166,7 @@ dataset = dataset.map(lambda image, mask: resize_and_pad(image, mask, target_hei
 
 Now we have created a Tensorflow Dataset to hold our data, which has also been scaled and resized and padded so that all images have a uniform dimension.
 
-### 2. Display Example after Processing
+### 2. Display Examples after Processing
 Now we will display three example images to show how they look after processing:
 ``` python
 #display three images from the dataset to see what they look like after processing
