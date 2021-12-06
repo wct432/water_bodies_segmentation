@@ -129,7 +129,7 @@ for ax, (image, mask) in zip(axes, examples):
     ax[0].imshow(image)
     ax[1].imshow(mask)
 ```
-![Example Images](/../images/images/images_mask_samples.png?raw=true)
+![Example Images](/../images/images/image_mask_samples.png?raw=true)
 
 # 3. Prepare Data
 Now that we have an overview of the data we're working with we are ready to create a Tensorflow Dataset for training, preprocess and transform the images, and prepare train, test, and validation sets for our model.   
@@ -174,7 +174,7 @@ n_examples = 3
 for samples in dataset.take(n_examples):
   display_img_mask_tensors(samples)
 ```
-![Example Images after Processing](/../images/images/images_masks_post_processing.png?raw=true)
+![Example Images after Processing](/../images/images/image_masks_post_processing.png?raw=true)
 
 ### 3. Create Train, Test, and Validation Sets
 We will now create Train, Test, and Validation sets using the split_dataset function defined in utils. We will also prefetch 1 batch of 5 samples at a time to speed up training. This allows elements to be prepared while current elements are being processed, improving latency at the cost of additional memory.
