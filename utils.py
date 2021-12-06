@@ -17,20 +17,20 @@ def find_mean_img_dimensions(image_path, filenames):
         Returns:
             Tuple that contains the mean height and width of all the images.
     """
-    total_height = 0
-    total_width = 0
-    length = len(filenames)
-    for file in tqdm(filenames):
-      image = cv2.imread(image_path + file)
-      height, width = image.shape[:2]
-      total_height += height
-      total_width += width
+    total_height = 0                            #track total height
+    total_width = 0                             #track total width
+    length = len(filenames)                     #number of files in directory
+    for file in tqdm(filenames):                #for each file in directory
+        image = cv2.imread(image_path + file)   #load image using Open CV
+        height, width = image.shape[:2]         #capture image height and width
+        total_height += height                  #add height to total height
+        total_width += width                    #add width to total width
     
 
-    mean_height = total_height / length
-    mean_width = total_width / length
+    mean_height = total_height / length         #divide total height by number of images to find mean height
+    mean_width = total_width / length           #divide total width by number of images to find mean width
 
-    return (mean_height,mean_width)
+    return (mean_height,mean_width)             #return mean height and width as a tuple
 
 
 
@@ -50,18 +50,13 @@ def load_img_and_mask(image_path,
         Returns:
           Tuple containing image and mask as uint8 tensors.
     """
-    #read image 
-    image = tf.io.read_file(image_path + filename)
-    #decode jpeg into tensor
-    image = tf.image.decode_jpeg(image, channels=3)
+    image = tf.io.read_file(image_path + filename)              #read file into buffer                    
+    image = tf.image.decode_jpeg(image, channels=3)             #decode jpeg into tensor
+    mask_filename = (mask_path + filename)                      #create full filename for masks
+    mask = tf.io.read_file(mask_filename)                       #read masks
+    mask = tf.image.decode_image(mask, channels=1)              #decode mask into tensor
 
-    mask_filename = (mask_path + filename)
-    #read mask
-    mask = tf.io.read_file(mask_filename)
-    #decode mask into tensor
-    mask = tf.image.decode_image(mask, channels=1, expand_animations = False)
-
-    return (image, mask)
+    return (image, mask)                                        #return image and mask as a tuple
 
 
 
@@ -93,7 +88,6 @@ def split_dataset(dataset, dataset_size,
 
     #determine the size of each set
     train_size = int(train_split * dataset_size)
-    val_size = int(val_split * dataset_size)
     test_size = int(test_split * dataset_size)
 
     #generate sets
