@@ -174,7 +174,9 @@ n_examples = 3
 for samples in dataset.take(n_examples):
   display_img_mask_tensors(samples)
 ```
-![Example Images after Processing](/../images/images/image_masks_post_processing.png?raw=true)
+![Example Image 1 after Processing](/../images/images/post_processing_1.png?raw=true)
+![Example Image 2 after Processing](/../images/images/post_processing_2.png?raw=true)
+![Example Image 3 after Processing](/../images/images/post_processing_3.png?raw=true)
 
 ### 3. Create Train, Test, and Validation Sets
 We will now create Train, Test, and Validation sets using the split_dataset function defined in utils. We will also prefetch 1 batch of 5 samples at a time to speed up training. This allows elements to be prepared while current elements are being processed, improving latency at the cost of additional memory.
